@@ -16,7 +16,7 @@ const completed = document.getElementById('completed');
 let todos = []; // Array for storing all Todos Tasks
 
 function renderTodos() {  // function for rendering tasks
-  // coede to set color of all buttons to lightgrey
+  // code to set color of all buttons to lightgrey
   uncomplete.style.color = 'rgb(204, 204, 204)';
   completed.style.color = 'rgb(204, 204, 204)';
   all.style.color = 'black';
@@ -31,7 +31,7 @@ function renderTodos() {  // function for rendering tasks
     addBtn.style.visibility = 'visible';
   })
 
-  for (let i = 0; i < todos.length; i++) { // loop runs for every new task to be added in list
+  for (let i = 0; i < todos.length; i++) {
     const todo = todos[i]; 
     const li = document.createElement('li');  // creating new list item for task to be added in list
 
@@ -107,8 +107,9 @@ function renderTodos() {  // function for rendering tasks
       checkbox.checked = true;
       todo.done = true;
     });
+    totalCount.textContent = `${todos.length} Task${todos.length === 1 ? '' : 's'}`; // updating the count of tasks in todo lsit
   }
-  totalCount.textContent = `${todos.length} task left${todos.length === 1 ? '' : 's'}`; // updating the count of tasks in todo lsit
+  
 }
 
 addBtn.addEventListener('click', () => { // event listner for adding new task in task list button
@@ -140,6 +141,7 @@ clearCompleted.addEventListener('click', () => { // event listner for "Clear com
   task.parentNode.remove();
   });
   todos = todos.filter(item => item.done == false);
+  totalCount.textContent = `${todos.length} Task${todos.length === 1 ? '' : 's'}`; // updating the count of tasks in todo lsit
 });
 
 renderTodos();
